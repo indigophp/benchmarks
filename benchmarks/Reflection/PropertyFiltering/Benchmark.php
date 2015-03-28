@@ -20,11 +20,11 @@ use Athletic\AthleticEvent;
  */
 class Benchmark extends AthleticEvent
 {
-    protected $example;
+    protected $reflection;
 
     public function setUp()
     {
-        $this->example = new Example;
+        $this->reflection = new \ReflectionClass(new Example);
     }
 
     /**
@@ -32,11 +32,9 @@ class Benchmark extends AthleticEvent
      */
     public function testBuiltInFiltering()
     {
-        $reflection = new \ReflectionClass($this->example);
-
-        $reflectionProperties = array_diff(
-            $reflection->getProperties(\ReflectionProperty::IS_PUBLIC | \ReflectionProperty::IS_PROTECTED),
-            $reflection->getProperties(\ReflectionProperty::IS_STATIC)
+        array_diff(
+            $this->reflection->getProperties(\ReflectionProperty::IS_PUBLIC | \ReflectionProperty::IS_PROTECTED),
+            $this->reflection->getProperties(\ReflectionProperty::IS_STATIC)
         );
     }
 
@@ -45,10 +43,8 @@ class Benchmark extends AthleticEvent
      */
     public function testArrayFiltering()
     {
-        $reflection = new \ReflectionClass($this->example);
-
-        $reflectionProperties = array_filter(
-            $reflection->getProperties(),
+        array_filter(
+            $this->reflection->getProperties(),
             function (\ReflectionProperty $property) {
                 return ($property->isPublic() || $property->isProtected()) && ! $property->isStatic();
             }
@@ -60,10 +56,8 @@ class Benchmark extends AthleticEvent
      */
     public function testCombinedFiltering()
     {
-        $reflection = new \ReflectionClass($this->example);
-
-        $reflectionProperties = array_filter(
-            $reflection->getProperties(\ReflectionProperty::IS_PUBLIC | \ReflectionProperty::IS_PROTECTED),
+        array_filter(
+            $this->reflection->getProperties(\ReflectionProperty::IS_PUBLIC | \ReflectionProperty::IS_PROTECTED),
             function (\ReflectionProperty $property) {
                 return ! $property->isStatic();
             }
