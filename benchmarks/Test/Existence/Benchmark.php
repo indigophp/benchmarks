@@ -9,34 +9,37 @@
  * file that was distributed with this source code.
  */
 
-namespace Indigo\Benchmark\Misc\FalseResult;
+namespace Indigo\Benchmark\Test\Existence;
 
 use Athletic\AthleticEvent;
 
 /**
- * Tests which way is the fastest to return a false value
+ * Tests which way is the fastest to check if a variable has been set
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
 class Benchmark extends AthleticEvent
 {
-    /**
-     * @iterations 1000
-     */
-    public function testEmptyFunction()
+    protected $var;
+
+    public function setUp()
     {
-        empty(true);
+        $this->var = new \stdClass;
     }
 
     /**
      * @iterations 1000
      */
-    public function testClosure()
+    public function testIsset()
     {
-        $test = function() {
-            return false;
-        };
+        isset($this->var);
+    }
 
-        $test(true);
+    /**
+     * @iterations 1000
+     */
+    public function testComparison()
+    {
+        $this->var !== null;
     }
 }
