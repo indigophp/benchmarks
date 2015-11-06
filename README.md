@@ -32,7 +32,7 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 ## Credits
 
 - [Márk Sági-Kazár](https://github.com/sagikazarmark)
-- [All Contributors](https://github.com/indigophp/skeleton/contributors)
+- [All Contributors](https://github.com/indigophp/benchmarks/contributors)
 
 
 ## License

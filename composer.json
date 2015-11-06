@@ -12,11 +12,12 @@
     ],
     "require": {
         "php": ">=5.4",
-        "athletic/athletic": "^0.1"
+        "phpbench/phpbench": "^0.12"
     },
     "autoload": {
         "psr-4": {
-            "Indigo\\Benchmark\\": "benchmarks/"
+            "Indigo\\Benchmark\\": "benchmarks/",
+            "Indigo\\Benchmark\\Examples\\": "examples/"
         }
     },
     "extra": {
@@ -24,6 +25,7 @@
             "dev-master": "0.1-dev"
         }
     },
-    "prefer-stable": true,
-    "minimum-stability": "dev"
+    "require-dev": {
+        "sllh/php-cs-fixer-styleci-bridge": "^2.1"
+    }
 }
