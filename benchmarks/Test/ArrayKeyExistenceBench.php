@@ -35,6 +35,11 @@ final class ArrayKeyExistenceCheckBench
         $this->array['key'] = 'value';
     }
 
+    public function benchNonExistingKeyIsset()
+    {
+        isset($this->array['key']);
+    }
+
     public function benchNonExistingKeyArrayKeyExists()
     {
         array_key_exists('key', $this->array);
@@ -46,6 +51,14 @@ final class ArrayKeyExistenceCheckBench
             $this->array['key'];
         } catch (\ErrorException $e) {
         }
+    }
+
+    /**
+     * @BeforeMethods({"initKey"})
+     */
+    public function benchExistingKeyIsset()
+    {
+        isset($this->array['key']);
     }
 
     /**
