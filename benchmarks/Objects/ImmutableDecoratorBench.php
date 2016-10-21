@@ -17,7 +17,7 @@ use PhpBench\Benchmark\Metadata\Annotations\Revs;
  * @BeforeMethods({"init"})
  * @Groups({"immutability"})
  * @Revs(1000)
- * @Iterations(5)
+ * @Iterations(100)
  */
 final class ImmutableDecoratorBench
 {

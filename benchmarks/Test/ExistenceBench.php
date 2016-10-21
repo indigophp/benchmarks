@@ -15,7 +15,7 @@ use PhpBench\Benchmark\Metadata\Annotations\Revs;
  * @BeforeMethods({"init"})
  * @Groups({"test"})
  * @Revs(1000)
- * @Iterations(5)
+ * @Iterations(100)
  */
 final class ExistenceBench
 {

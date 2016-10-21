@@ -15,7 +15,7 @@ use PhpBench\Benchmark\Metadata\Annotations\Revs;
  * @Groups({"arrays", "iteration"})
  * @ParamProviders({"dataProvider"})
  * @Revs(1000)
- * @Iterations(5)
+ * @Iterations(10)
  */
 final class ModifyIterationBench
 {
